@@ -1,3 +1,5 @@
+import json
+
 def encryption(word):
     encrypted_word = ""
     string = "abcdefghijklmnopqrstuvwxyz"
@@ -58,7 +60,11 @@ def add(input,domain,dic):
 
 def main():
     password = input("Enter the password to access the list of passwords: ")
-    dic = {}
+    try:
+        with open("passwords.txt", "r") as f:
+            dic = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        dic = {}
 
     if password == "this":
         while True:
@@ -80,6 +86,8 @@ def main():
                     print("No passwords stored yet.")
 
             elif operation == "q":
+                with open("passwords.txt", "w") as f:
+                    json.dump(dic, f)
                 print("You have decided to quit the program")
                 break
 
