@@ -35,7 +35,7 @@ def find_start(maze,start):
                 return i,j
     return None
 
-def find_path(maze,stdscr):
+def bfs(maze,stdscr):
     start="O"
     end="X"
     start_pos=find_start(maze,start)
@@ -88,9 +88,7 @@ def main(stdscr):
     curses.init_pair(1,curses.COLOR_BLUE,curses.COLOR_BLACK)#initialize the color  
     curses.init_pair(2,curses.COLOR_RED,curses.COLOR_BLACK)
     #blue_and_black=curses.color_pair(1) #using the color pair
-    find_path(maze,stdscr)
+    bfs(maze,stdscr)
     stdscr.getch() #get char similar to input statement
     
 wrapper(main)
-
-
