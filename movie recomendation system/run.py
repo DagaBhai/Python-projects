@@ -4,12 +4,8 @@ import pickle
 import requests
 import os
 
-with open('movie recomendation system/movies_list.pkl', 'rb') as f:
-    movies = pickle.load(f)
-
-with open('movie recomendation system/similarity.pkl', 'rb') as f:
-    similarity = pickle.load(f)
-
+movies = pickle.load(open('movie recomendation system/movies_list.pkl', 'rb'))
+similarity = pickle.load(open("movie recomendation system/similarity.pkl", 'rb'))
 movies_list = movies['title'].values
 
 if 'selected_movie' not in st.session_state:
