@@ -39,7 +39,7 @@ def recommend(movie):
     return recommend_movie, recommend_poster
 
 def main():
-    imageCarouselComponent = components.declare_component("image-carousel-component", path="frontend/public")
+    imageCarouselComponent = components.declare_component("image-carousel-component", path="movie recommendation system/frontend/public")
     movie_ids = [1632, 299536, 17455, 2830, 429422, 9722, 13972, 240, 155, 598, 914, 255709, 572154]
     imageUrls = [fetch_poster(movie_id) for movie_id in movie_ids]
     clicked_url = imageCarouselComponent(imageUrls=imageUrls, height=200)
