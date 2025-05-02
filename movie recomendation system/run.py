@@ -2,7 +2,6 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pickle
 import requests
-import os
 
 movies = pickle.load(open('movie recomendation system/movies_list.pkl', 'rb'))
 similarity = pickle.load(open("movie recomendation system/similarity.pkl", 'rb'))
