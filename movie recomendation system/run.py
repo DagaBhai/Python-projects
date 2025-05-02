@@ -2,9 +2,14 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pickle
 import requests
+import os
 
-movies = pickle.load(open('movie recomendation system/movies_list.pkl', 'rb'))
-similarity = pickle.load(open("movie recomendation system/similarity.pkl", 'rb'))
+with open('movie recomendation system/movies_list.pkl', 'rb') as f:
+    movies = pickle.load(f)
+
+with open('movie recomendation system/similarity.pkl', 'rb') as f:
+    similarity = pickle.load(f)
+
 movies_list = movies['title'].values
 
 if 'selected_movie' not in st.session_state:
@@ -37,11 +42,8 @@ def main():
     imageCarouselComponent = components.declare_component("image-carousel-component", path="frontend/public")
     movie_ids = [1632, 299536, 17455, 2830, 429422, 9722, 13972, 240, 155, 598, 914, 255709, 572154]
     imageUrls = [fetch_poster(movie_id) for movie_id in movie_ids]
-
     clicked_url = imageCarouselComponent(imageUrls=imageUrls, height=200)
     clicked_index = imageUrls.index(clicked_url) if clicked_url in imageUrls else None
-
-
 
     if clicked_index is not None:
         clicked_id = movie_ids[clicked_index]
