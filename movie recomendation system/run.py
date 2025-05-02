@@ -3,8 +3,8 @@ import streamlit.components.v1 as components
 import pickle
 import requests
 
-movies = pickle.load(open('movies_list.pkl', 'rb'))
-similarity = pickle.load(open("similarity.pkl", 'rb'))
+movies = pickle.load(open('movie recomendation system/movies_list.pkl', 'rb'))
+similarity = pickle.load(open("movie recomendation system/similarity.pkl", 'rb'))
 movies_list = movies['title'].values
 
 if 'selected_movie' not in st.session_state:
